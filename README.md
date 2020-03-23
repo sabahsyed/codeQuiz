@@ -1,1 +1,1 @@
-# codeQuiz
+# Code Quiz

@@ -4,58 +4,65 @@ var secondsLeft = 60;
 var startButton = document.getElementById("start-btn");
 var questionContainerEl = document.getElementById("question-container");
 var nextButtonEl = document.getElementById( "next-btn");
-var shuffledQuestions, currentQuestionIndex = 0 ;
+var currentQuestionIndex = 0 ;
 var questionEl = document.getElementById("question");
 var answerButtonsEl = document.getElementById("answer-buttons");
-
+var highscoresEl = document.getElementById("highscores");
+var finishEl = document.getElementById("finish-btn");
+window.localStorage.setItem("key" , highscoresEl);
+//highscoresEl.textContent = 0;
 var questions = [
   {
-    question:"what is 4+4?",
+    question:"What is a constructor?",
     answers:[
-      {text: "8", correct :true},
-      {text: "22", correct  :false},
-      {text: "10", correct :false},
-      {text: "22", correct  :false},
+      {text: "It is a variable", correct :false},
+      {text: "It is a language", correct  :false},
+      {text: "It is a way of initializing and using objects", correct :true},
+      {text: "It is not used to convert objects into different datatypes", correct  :false},
     ]
   },
   {
-    question:"what is 2+3?",
+    question:"What does boolean return?",
     answers:[
-      {text: "5", correct :true},
-      {text: "22", correct  :false},
-      {text: "10", correct :false},
-      {text: "22", correct  :false},
+      {text: "True/False", correct :true},
+      {text: "Number", correct  :false},
+      {text: "String", correct :false},
+      {text: "Array", correct  :false},
     ]
   },
   {
-    question:"what is 2+10?",
+    question:"What does === mean?",
     answers:[
-      {text: "12", correct :true},
-      {text: "22", correct  :false},
-      {text: "10", correct :false},
-      {text: "22", correct  :false},
+      {text: "Equal value only", correct :false},
+      {text: "Compares length of 3 strings", correct  :false},
+      {text: "Does nothing!", correct :false},
+      {text: "Equal value and datatype", correct  :true},
     ]
   },
   {
-    question:"what is 2+6?",
+    question:"JSON value CANNOT be....",
     answers:[
-      {text: "8", correct :true},
-      {text: "22", correct  :false},
-      {text: "10", correct :false},
-      {text: "22", correct  :false},
+      {text: "String", correct :false},
+      {text: "Object", correct  :false},
+      {text: "Function/date", correct :true},
+      {text: "Array", correct  :false},
     ]
   }
 ]
-startButton.addEventListener("click", startGame)
-nextButtonEl.addEventListener("click", nextQuestionHandler);
+
 
 function nextQuestionHandler(){
   if(currentQuestionIndex < questions.length){
     currentQuestionIndex++;
-    showQuestion(questions[currentQuestionIndex]);
+  }else 
+  if(currentQuestionIndex === questions.length){
+    nextButtonEl.style.display = "none";
+    finishEl.style.display = "block";
   }
 }
+function viewHighscores(){
 
+}
 function setTime() {
   var timerInterval = setInterval(function() {
     secondsLeft--;
@@ -73,22 +80,36 @@ function sendMessage() {
 }
 
 function startGame(){
-  console.log("started");
+  console.log("started");           //Check success
   startButton.classList.add("hide");
   questionContainerEl.classList.remove("hide");
   nextButtonEl.classList.remove("hide");
   showQuestion(questions[currentQuestionIndex]); 
 }
 
-function showQuestion(question){
-  questionEl.innerText = question.question;
+function showQuestion(currentQuestion){
+  questionEl.innerText = currentQuestion.question;
 
-  question.answers.forEach(element => {
-    console.log(element);
+  currentQuestion.answers.forEach(element => {
+    //console.log(element);
     var answerBtn = document.createElement("button");
     answerBtn.innerHTML = element.text;
     answerButtonsEl.appendChild(answerBtn);
-  
+    answerBtn.addEventListener("click", checkAnswer);
   });
 }
+//nextQuestionHandler();
+
+function checkAnswer(){
+  var size = questions[currentQuestionIndex].answers.length;
+  for(var i = 0; i< size; i++) {
+    if(event.target.textContent == questions[currentQuestionIndex].answers[i].text) {
+      alert(questions[currentQuestionIndex].answers[i].correct)
+    }
+  }
+}
+
+startButton.addEventListener("click", startGame);
+nextButtonEl.addEventListener("click", nextQuestionHandler);
+highscoresEl.addEventListener("click", viewHighscores);
 setTime();

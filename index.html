@@ -16,45 +16,22 @@
   <button class='btn btn-success fixed-top'> 
   <div id = "highscores"> View highscores</div>
   </button> 
-  <h1 class = "time" ></h1>
- 
-  </div>
-  <div class = "container">
-  <div id = "start">Start Quiz !</div>
-  <div id = "quiz">
-  <div id = "question"> <p>Question:</p></div>
-  <div id = "choices">
-    <div class="form-check choice">
-    <input class="form-check-input" type="radio" name="choice" id="A" onclick= "checkAnswer('A')">
-    <label class="form-check-label" for="exampleRadios1">
-     A
-    </label>
-    </div>
-    <div class="form-check choice">
-    <input class="form-check-input" type="radio" name="choice" id="B"  onclick= "checkAnswer('B')">
-    <label class="form-check-label" for="exampleRadios2">
-     B
-    </label>
-    </div>
-    <div class="form-check choice">
-    <input class="form-check-input" type="radio" name="choice" id="C" onclick= "checkAnswer('C')">
-    <label class="form-check-label" for="exampleRadios1">
-      C
-    </label>
-    </div>
-    <div class="form-check choice">
-      <input class="form-check-input" type="radio" name="choice" id="D" onclick= "checkAnswer('D')">
-      <label class="form-check-label" for="exampleRadios1">
-        D
-      </label>
+  <h3 class="time"></h3>
+  <div id ="main"></div>
+    <div class = "container">
+      <div id = "question-container" class = "hide">
+        <div id ="question">Question</div>
+        <div id= "answer-buttons" class = "btn-grid"></div>
+        <button id = "next-btn" class ="next-btn btn" >Next</button>
       </div>
-  <div id = "element"></div>
-  <button id = "next">Next</button>
-  <button class = "reset"> Reset </button>
-  </div>
+      <div class = "controls">
+        <button id = "start-btn" class ="start-btn btn">Start</button>
+        </div>
+    </div>
+  
+  
   
 <div  id = "scoreContainer" style = "display :none;"></div>
-</div>
 <script text = "type/javascript" src ="script.js"> </script>
 </body>
 </html>

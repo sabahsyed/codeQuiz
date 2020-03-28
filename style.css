@@ -45,7 +45,7 @@ body{
   border-color: yellow ;
   border: 3px solid;
 }
-.start-btn , .next-btn{
+.start-btn , .next-btn , .finish-btn{
   font-size:1.2 rem;
   font-weight: bold;
   padding: 10px 20px;

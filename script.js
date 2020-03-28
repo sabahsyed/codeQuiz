@@ -53,11 +53,21 @@ var questions = [
 
 function nextQuestionHandler(){
   if(currentQuestionIndex < questions.length){
+    questionEl.style.display = "none";
+    clear();
+    //answerButtonsEl.style.display = "none";
     currentQuestionIndex++;
-  }else 
-  if(currentQuestionIndex === questions.length){
-    nextButtonEl.style.display = "none";
-    finishEl.style.display = "block";
+    if(currentQuestionIndex < questions.length){
+      showQuestion(questions[currentQuestionIndex]);
+    }
+  }
+  else {
+    if(currentQuestionIndex == questions.length){
+      questionEl.style.display = "none";
+      nextButtonEl.style.display = "none";
+      finishEl.style.display = "block";
+      clear();
+    }
   }
 }
 function viewHighscores(){
@@ -84,14 +94,20 @@ function startGame(){
   startButton.classList.add("hide");
   questionContainerEl.classList.remove("hide");
   nextButtonEl.classList.remove("hide");
-  showQuestion(questions[currentQuestionIndex]); 
+  showQuestion(questions[currentQuestionIndex]); //0
 }
-
+function clear(){
+  answerButtonsEl.innerHTML = "";
+}
 function showQuestion(currentQuestion){
+  questionEl.style.display = "block";
+  clear();
   questionEl.innerText = currentQuestion.question;
-
+  if(currentQuestionIndex == questions.length -1){
+    nextButtonEl.style.display = "none";
+    finishEl.style.display = "block";
+  }
   currentQuestion.answers.forEach(element => {
-    //console.log(element);
     var answerBtn = document.createElement("button");
     answerBtn.innerHTML = element.text;
     answerButtonsEl.appendChild(answerBtn);
@@ -104,11 +120,12 @@ function checkAnswer(){
   var size = questions[currentQuestionIndex].answers.length;
   for(var i = 0; i< size; i++) {
     if(event.target.textContent == questions[currentQuestionIndex].answers[i].text) {
-      alert(questions[currentQuestionIndex].answers[i].correct)
-    }
+      alert(questions[currentQuestionIndex].answers[i].correct);
   }
 }
-
+nextQuestionHandler();
+}
+//answerBtn.addEventListener("click", checkAnswer);
 startButton.addEventListener("click", startGame);
 nextButtonEl.addEventListener("click", nextQuestionHandler);
 highscoresEl.addEventListener("click", viewHighscores);

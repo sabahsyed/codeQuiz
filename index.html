@@ -14,17 +14,14 @@
 </head>
 <body>
   <button id = "scoresBtn" class= 'scores btn btn-success fixed-top'>Scores:<span id="counter">0</span></button>
-  <!-- <div class="todos">
-    <form id="todo-form" method="POST">
-      <label for="todo-text">Add a Todo:</label>
-      <input type="text" placeholder="Name" name="todo-text" id="todo-text" />
-      <input type="text" placeholder="Score" name="todo-text" id="scoreCount" />
-    </form>
-    <p>Todo Count: <span id="todo-count">0</span></p>
-    <ul id="todo-list"></ul>
-  </div> -->
   <h3 class="time"></h3>
   <div id ="main"></div>
+  <form name="myForm" class = "btn" id= "form" style = "display:none;">
+    Name: <input type="text" name="fname">
+    Score : <input type = "text" name = "score" id = "form-score" value = "">
+    <button type="button">Submit</button>
+  </form>
+  
     <div class = "container">
       <div id = "question-container" class = "hide">
         <div id ="question">Question</div>

@@ -13,9 +13,16 @@
 <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
-  <button class='btn btn-success fixed-top'> 
-  <div id = "highscores"> View highscores</div>
-  </button> 
+  <button id = "scoresBtn" class= 'scores btn btn-success fixed-top'>Scores:<span id="counter">0</span></button>
+  <!-- <div class="todos">
+    <form id="todo-form" method="POST">
+      <label for="todo-text">Add a Todo:</label>
+      <input type="text" placeholder="Name" name="todo-text" id="todo-text" />
+      <input type="text" placeholder="Score" name="todo-text" id="scoreCount" />
+    </form>
+    <p>Todo Count: <span id="todo-count">0</span></p>
+    <ul id="todo-list"></ul>
+  </div> -->
   <h3 class="time"></h3>
   <div id ="main"></div>
     <div class = "container">
@@ -24,15 +31,12 @@
         <div id= "answer-buttons" class = "btn-grid"></div>
         <button id = "next-btn" class ="next-btn btn" >Next</button>
         <button id = "finish-btn" class = "finish-btn btn" style = "display:none;"> Finish</button>
+        <button id = "highscores" class = "highscores-btn btn" style = "display:none;"> Highscores</button>
       </div>
       <div class = "controls">
         <button id = "start-btn" class ="start-btn btn">Start</button>
         </div>
     </div>
-  
-  
-  
-<div  id = "scoreContainer" style = "display :none;"></div>
 <script text = "type/javascript" src ="script.js"> </script>
 </body>
 </html>

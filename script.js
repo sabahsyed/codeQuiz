@@ -97,7 +97,6 @@ function setTime() {
   var timerInterval = setInterval(function() {
     secondsLeft--;
     timeEl.textContent = "Time Left : " + secondsLeft;
-
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
       sendMessage();  
@@ -114,6 +113,7 @@ function startGame(){
   startButton.classList.add("hide");
   questionContainerEl.classList.remove("hide");
   nextButtonEl.classList.remove("hide");
+  setTime();
   showQuestion(questions[currentQuestionIndex]); //0
 }
 function clear(){
@@ -159,4 +159,3 @@ startButton.addEventListener("click", startGame);
 nextButtonEl.addEventListener("click", nextQuestionHandler);
 scoresButtonEl.addEventListener("click",viewScores);
 clearBtnEl.addEventListener("click",clearAll);
-setTime();

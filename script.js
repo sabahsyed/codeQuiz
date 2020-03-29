@@ -15,12 +15,17 @@ var modal = document.getElementById("myModal");
 var clearBtnEl = document.getElementById("container");
 var formEl= document.getElementById("form");
 var formScoreValue = document.getElementById("form-score");
+var userNameEl = document.getElementById("userName");
 var counter = document.querySelector("#counter");
-var count = localStorage.getItem("count");
-count = 0;
+var submitBtnEl = document.getElementById("submit");
+var count = 0;
 counter.textContent = count;
-localStorage.setItem("count", count);
-//highscoresEl.textContent = 0;
+//var count = localStorage.getItem("count");
+// localStorage.setItem("count", count);
+// localStorage.setItem("userName", name);
+// var userName = localStorage.getItem("userName");
+
+
 var questions = [
   {
     question:"What is a constructor?",
@@ -59,8 +64,35 @@ var questions = [
     ]
   }
 ]
-
-
+function submitFunction(){
+  // localStorage.removeItem("players");
+  // localStorage.removeItem("scores");
+  var players = JSON.parse(localStorage.getItem("players"));
+  if (players == null) {
+    players = [];
+    players[0] = userNameEl.value;
+  } else {
+    var size = players.length;
+    players[size] = userNameEl.value;
+  }
+  var scores = JSON.parse(localStorage.getItem("scores"));
+  if (scores == null) {
+    scores = [];
+    scores[0] = count;
+  } else {
+    var size = scores.length;
+    scores[size] = count;
+  }
+  localStorage.setItem("players", JSON.stringify(players));
+  localStorage.setItem("scores",JSON.stringify(scores));
+  var results = "";
+  var size = players.length;
+  for(var i = 0 ; i < size; i++) {
+    results = results + "Name: " + players[i] + " Score: " + scores[i] + "\n";
+  }
+  alert(results);
+  
+}
 function nextQuestionHandler(){
   if(currentQuestionIndex < questions.length){
     questionEl.style.display = "none";
@@ -83,14 +115,18 @@ finishEl.onclick = function(){
   clear();
   finishEl.style.display = "none";
   document.getElementById("form").style.display = "block";
-  document.getElementById("form-score").value = count;
+  document.getElementById("form-score").value = count;1
 
 }
-  scoresButtonEl.onclick = function(){
+
+// submitBtnEl.onclick = function(){
+//   document.getElementById("userName").value = name.value;
+//   console.log(name.value);
+// }
+scoresButtonEl.onclick = function(){
   alert("Your score is : " + count);
-
 }
-function value(){
+function value(){ 
   return count;
 }
 function setTime() {
@@ -157,5 +193,5 @@ nextQuestionHandler();
 //answerBtn.addEventListener("click", checkAnswer);
 startButton.addEventListener("click", startGame);
 nextButtonEl.addEventListener("click", nextQuestionHandler);
-scoresButtonEl.addEventListener("click",viewScores);
-clearBtnEl.addEventListener("click",clearAll);
+//clearBtnEl.addEventListener("click",clearAll);
+submitBtnEl.addEventListener("click",submitFunction);

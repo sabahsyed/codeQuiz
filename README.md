@@ -8,6 +8,7 @@
  * DISPLAY of a questions one at a time with multiple choice answers in a button/ radio format.
  * A NEXT button to go to next question.
  * A HIGHSCORES button that keeps a tab of scores of all users.
+ * A final display of all the users and their respective scores.
 
 
 

@@ -20,10 +20,6 @@ var counter = document.querySelector("#counter");
 var submitBtnEl = document.getElementById("submit");
 var count = 0;
 counter.textContent = count;
-//var count = localStorage.getItem("count");
-// localStorage.setItem("count", count);
-// localStorage.setItem("userName", name);
-// var userName = localStorage.getItem("userName");
 
 
 var questions = [
@@ -118,11 +114,6 @@ finishEl.onclick = function(){
   document.getElementById("form-score").value = count;1
 
 }
-
-// submitBtnEl.onclick = function(){
-//   document.getElementById("userName").value = name.value;
-//   console.log(name.value);
-// }
 scoresButtonEl.onclick = function(){
   alert("Your score is : " + count);
 }
